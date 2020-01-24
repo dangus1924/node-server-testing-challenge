@@ -2,11 +2,10 @@
 exports.up = async function(knex) {
   await knex.schema.createTable('color', (table) => {
       table.increments('id')
-      table.text('color').notNullable().unique()
-      table.string('description', 240).notNullable()
+      table.string('color').notNullable().unique()      
   })
 };
 
 exports.down = async function(knex) {
-  await knex.schema.dropTableIfExist('color')
+  await knex.schema.dropTableIfExists('color')
 };

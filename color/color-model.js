@@ -1,30 +1,36 @@
 const db = require('../database/db-config')
 
-function add() {
+async function add(color) {
+    const [id] = await db('color').insert(color)
+    return findById(id)
+}
+
+function list() {
+  return db('color')
     
 }
 
-function find() {
-  return db('color')
-    .select('id', 'color', 'description')
+async function findById(id) {    
+    return db('color')
+        .where({ id })
+        .first()
 }
 
-function findById() {
-
+async function update(id, update) {
+    await db('color')
+        .where({ id })
+        .update(update)
+    return findById(id)
 }
 
-function update() {
-
-}
-
-function destroy() {
-
+function destroy(id) {
+    return db('color').where({ id }).del()
 }
 
 
 module.exports = {
     add,
-    find,
+    list,
     findById,
     update,
     destroy,

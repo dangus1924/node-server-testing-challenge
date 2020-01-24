@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --watch --verbose",
-    "server": "cross-env nodemon index.js",
+    "server": "cross-env NODE_ENV=dev nodemon index.js",
     "start": "node index.js"
   },
   "jest": {
